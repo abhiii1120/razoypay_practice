@@ -1,6 +1,8 @@
 import express from "express";
 import morgan from "morgan";
 import authRoutes from './routes/authRoutes.js';
+import productRoutes from './routes/productRoutes.js';
+
 
 const app = express();
 
@@ -14,6 +16,8 @@ app.get('/health',(_req,res) => {
 })
 
 app.use('/api/auth', authRoutes);
+app.use('/api/products', productRoutes);
+
 
 app.use((_req, res) => {
     res.status(404).json({ message: 'Route not found' });
