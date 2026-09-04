@@ -1,10 +1,11 @@
 import app from "./app.js";
 import { connectDatabase } from "./config/db.js";
+import { env } from "./config/env.js";
 
-let port = process.env.PORT
+let port = env.port;
 
-await connectDatabase()
+await connectDatabase();
 
-app.listen(port,() => {
-    console.log("server running on port",port)
-})
+app.listen(port, () => {
+  console.log("server running on port", port);
+});
