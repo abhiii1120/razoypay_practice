@@ -15,6 +15,15 @@ app.get('/health',(_req,res) => {
 
 app.use('/api/auth', authRoutes);
 
+app.use((_req, res) => {
+    res.status(404).json({ message: 'Route not found' });
+});
 
+app.use((error, _req, res, _next) => {
+    const statusCode = error.statusCode || 500;
+    res.status(statusCode).json({
+        message: error.message || 'Internal server error'
+    });
+});
 
 export default app;
