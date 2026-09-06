@@ -4,6 +4,7 @@ import { env } from '../config/env.js';
 
 export const requireAuth = (req, _res, next) => {
     const header = req.headers.authorization;
+        console.log('RAW HEADER:', header);
 
     if (!header || !header.startsWith('Bearer ')) {
         return next(Object.assign(new Error('Authorization token is required'), { statusCode: 401 }));
